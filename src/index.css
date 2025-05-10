@@ -1,0 +1,113 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 70% 97%;
+    --foreground: 20 10% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 10% 10%;
+
+    --primary: 20 80% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 80% 96%;
+    --secondary-foreground: 20 10% 10%;
+
+    --muted: 30 50% 95%;
+    --muted-foreground: 20 10% 40%;
+
+    --accent: 30 90% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 20 20% 90%;
+    --input: 20 20% 90%;
+    --ring: 20 80% 52%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-poppins;
+  }
+}
+
+@layer components {
+  .recipe-card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300;
+  }
+  
+  .recipe-card-img {
+    @apply w-full h-56 object-cover;
+  }
+  
+  .recipe-tag {
+    @apply px-3 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .btn-primary {
+    @apply bg-recipe-primary text-white px-6 py-3 rounded-lg hover:opacity-90 transition-opacity font-medium;
+  }
+  
+  .section-title {
+    @apply font-playfair text-3xl md:text-4xl font-bold text-foreground mb-6;
+  }
+  
+  .animate-card {
+    @apply opacity-0 animate-fade-in;
+  }
+  
+  .ingredient-list li {
+    @apply mb-2 flex items-start;
+  }
+  
+  .ingredient-list li:before {
+    content: "•";
+    @apply text-recipe-primary mr-2;
+  }
+  
+  .step-list {
+    @apply space-y-4 counter-reset-step;
+  }
+  
+  .step-list li {
+    @apply ml-7 relative;
+  }
+  
+  .step-list li:before {
+    counter-increment: step;
+    content: counter(step);
+    @apply absolute -left-7 rounded-full bg-recipe-primary text-white w-5 h-5 flex items-center justify-center text-sm font-medium;
+  }
+}
+
+.counter-reset-step {
+  counter-reset: step;
+}
+
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
